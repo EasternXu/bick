@@ -37,11 +37,11 @@
  <script>
  function subForm()
  {
-
  formsearch.submit();
  //form1为form的id
  }
  </script>
+
 <script type="text/javascript">
     function showMask() {
         $("#mask").css("height", $(document).height());
@@ -49,106 +49,27 @@
         $("#mask").show();
     }  
 </script>
+
+
 <div id="mask" class="mask" onclick="CloseMask()"></div> 
-<div id="header_wrap">
-    <div id="header">
-        <div style="float: left; width: 310px;">
-            <h1>
-                <a href="/" title="宽屏大气文章类--41天鹰模板">宽屏大气文章类--41天鹰模板</a>
-                <div class="" id="logo-sub-class">
-                </div>
-            </h1>
-        </div>
-        <div id="navi">
-
-<ul id="jsddm">
-<li><a class="navi_home" href="/">首页</a></li>
-<li><a href="/lookbike/">单车分类</a>
-<ul>
-
-<li><a href="/lookbike/fixed-gear/">死飞车</a></li>
-
-<li><a href="/lookbike/vintagebicycle/">复古骑行</a></li>
-
-<li><a href="/lookbike/roadbicycle/">公路车</a></li>
-
-<li><a href="/lookbike/mountainbike/">山地车</a></li>
-
-<li><a href="/lookbike/small/">折叠/小径车</a></li>
-
-<li><a href="/lookbike/bmx/">BMX</a></li>
-
-<li><a href="/lookbike/otherbike/">城市车及其他</a></li>
-
-
-</ul>
-
- </li2><li><a href="/gear/">骑行装备</a>
-<ul>
-
-<li><a href="/gear/accessories/">车身装备</a></li>
-
-<li><a href="/gear/rs/">人身装备</a></li>
-
-
-</ul>
-
- </li2><li><a href="/life/">单车生活</a>
-
-
-
-
-
- </li2><li><a href="/news/">行业资讯</a>
-
-
-
-
-
- </li2>
-
-</ul>
-
-            <div style="clear: both;">
-            </div>
-
-            
-        </div>
-        <div style="float: right; width: 209px;">
-            <div class="widget" style="height: 30px; padding-top: 20px;">
-                <div style="float: left;">
-      <form  name="formsearch" action="/plus/search.php"><input type="hidden" name="kwtype" value="0" />                
-<input name="q" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
-        </form>
-                        </div>
-                <div style="float: left;">
-                    <img src="__INDEX__/images/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
-                        padding: 0px;" onclick="subForm()"  /></div>
-                <div style="clear: both;">
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
-
+{include file='public/header'}
 </div>
     <div id="xh_wrapper">
        
-<input type="hidden" id="hdUrlFocus" />
+    <input type="hidden" id="hdUrlFocus" />
     <div class="xh_h_show">
         <div class="xh_h_show_in">
         <div id="zSlider">
             <div id="picshow">
     <div id="picshow_img">
         <ul>
-<li style="display: list-item;"><a href="/life/361.html" target="_blank">
-                <img src="__INDEX__/images/1-140206162449A0.jpg" alt="骑行40000公里 英国胶片摄影师的骑游之旅"></a></li>
-<li style="display: list-item;"><a href="/life/394.html" target="_blank">
-                <img src="__INDEX__/images/354.jpg" alt="骑看世界：春节骑行海南岛 畅游冬日骑行天堂"></a></li>
-<li style="display: list-item;"><a href="/life/364.html" target="_blank">
-                <img src="__INDEX__/images/1-1402061A315209.jpg" alt="隆猫西班牙自行车之旅-Mallorca岛梦幻旅程（上）"></a></li>
-<li style="display: list-item;"><a href="/gear/rs/320.html" target="_blank">
+            <li style="display: list-item;"><a href="/life/361.html" target="_blank">
+                            <img src="__INDEX__/images/1-140206162449A0.jpg" alt="骑行40000公里 英国胶片摄影师的骑游之旅"></a></li>
+            <li style="display: list-item;"><a href="/life/394.html" target="_blank">
+                            <img src="__INDEX__/images/354.jpg" alt="骑看世界：春节骑行海南岛 畅游冬日骑行天堂"></a></li>
+            <li style="display: list-item;"><a href="/life/364.html" target="_blank">
+                            <img src="__INDEX__/images/1-1402061A315209.jpg" alt="隆猫西班牙自行车之旅-Mallorca岛梦幻旅程（上）"></a></li>
+            <li style="display: list-item;"><a href="/gear/rs/320.html" target="_blank">
                 <img src="__INDEX__/images/1-1402061A155W4.jpg" alt="#CES展上的新玩意# Casio 发布 STB-1000 智能手表 可同步骑行速"></a></li>
 
 
@@ -555,25 +476,7 @@
                         <img src="__INDEX__/images/weixin.jpg" alt="" title="扫描添加我们的公众微信" class="alignnone size-full wp-image-18966"
                             height="140" width="120"></a></div>
 </div>
-<div id="footer_wrap">
-    <div id="footer">
-        <div class="footer_navi">
-            <ul id="menu-%e5%b0%be%e9%83%a8%e5%af%bc%e8%88%aa" class="menu">
-                <li id="menu-item-156" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156">
-                    <a href="/aboutus.html">关于我们</a></li>
-                <li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157">
-                    <a href="/news/">行业资讯</a></li>
-                <li id="menu-item-158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-158">
-                    <a href="/tougao.html">我要投稿</a></li>
-            </ul>
-        </div>
-        <div class="footer_info">
-            <span class="legal">Copyright &#169; 2016-2020 qq群：484519446 版权所有&#160;&#160;&#160;<a href="#">
-                琼ICP备******号</a>&#160;&#160;&#160;
-
-        </div>
-    </div>
-</div>
+{include file='public/footer'}
 <div style="display: none;" id="scroll">
 </div>
   

@@ -36,87 +36,8 @@
     }  
 </script>
 <div id="mask" class="mask" onclick="CloseMask()"></div> 
-<div id="header_wrap">
-    <div id="header">
-        <div style="float: left; width: 310px;">
-            <h1>
-                <a href="/" title="DEMO12演示站">DEMO12演示站</a>
-                <div class="" id="logo-sub-class">
-                </div>
-            </h1>
-        </div>
-        <div id="navi">
+{include file='public/header'}
 
-<ul id="jsddm">
-<li><a class="navi_home" href="/">首页</a></li>
-<li><a href="/plus/list.php?tid=1">单车分类</a>
-<ul>
-
-<li><a href="/plus/list.php?tid=5">死飞车</a></li>
-
-<li><a href="/plus/list.php?tid=6">复古骑行</a></li>
-
-<li><a href="/plus/list.php?tid=7">公路车</a></li>
-
-<li><a href="/plus/list.php?tid=8">山地车</a></li>
-
-<li><a href="/plus/list.php?tid=9">折叠/小径车</a></li>
-
-<li><a href="/plus/list.php?tid=10">BMX</a></li>
-
-<li><a href="/plus/list.php?tid=11">城市车及其他</a></li>
-
-
-</ul>
-
- </li2><li><a href="/plus/list.php?tid=2">骑行装备</a>
-<ul>
-
-<li><a href="/plus/list.php?tid=12">车身装备</a></li>
-
-<li><a href="/plus/list.php?tid=13">人身装备</a></li>
-
-
-</ul>
-
- </li2><li><a href="/plus/list.php?tid=3">单车生活</a>
-
-
-
-
-
- </li2><li><a href="/plus/list.php?tid=4">行业资讯</a>
-
-
-
-
-
- </li2>
-
-</ul>
-
-            <div style="clear: both;">
-            </div>
-
-            
-        </div>
-        <div style="float: right; width: 209px;">
-            <div class="widget" style="height: 30px; padding-top: 20px;">
-                <div style="float: left;">
-      <form  name="formsearch" action="/plus/search.php"><input type="hidden" name="kwtype" value="0" />                
-<input name="q" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
-        </form>
-                        </div>
-                <div style="float: left;">
-                    <img src="__INDEX__/images/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
-                        padding: 0px;" onclick="ISearch()" /></div>
-                <div style="clear: both;">
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</div>
 
 </div>
     <div id="wrapper">
@@ -146,24 +67,7 @@
     </div>
 
     </div>
- <div id="footer_wrap">
-    <div id="footer">
-        <div class="footer_navi">
-            <ul id="menu-%e5%b0%be%e9%83%a8%e5%af%bc%e8%88%aa" class="menu">
-                <li id="menu-item-156" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-156">
-                    <a href="/aboutus.html">关于我们</a></li>
-                <li id="menu-item-157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-157">
-                    <a href="/contact.html">联络我们</a></li>
-                <li id="menu-item-158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-158">
-                    <a href="/tougao.html">我要投稿</a></li>
-            </ul>
-        </div>
-        <div class="footer_info">
-            <span class="legal">Copyright &copy; 2002-2014 ThinkPHP5 版权所有&nbsp;&nbsp;&nbsp;<a href="#">
-                粤ICP备******号</a>&nbsp;&nbsp;&nbsp;
-        </div>
-    </div>
-</div>
+    {include file='public/footer'}
 <div style="display: none;" id="scroll">
 </div>
 <script type="text/javascript" src="__INDEX__/style/z700bike_global.js"></script>
