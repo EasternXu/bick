@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>管理员列表</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,15 +37,15 @@
                                         <li>
                         <a href="#">系统</a>
                     </li>
-                                        <li class="active">用户管理</li>
-                                        </ul>
+                        <li class="active">栏目管理</li>
+                        </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href ='{:url('admin/add')}'"> <i class="fa fa-plus"></i> Add
+<button type="button" tooltip="添加栏目" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href ='{:url('cate/add')}'"> <i class="fa fa-plus"></i> Add
 </button>
 <div class="row">
     <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -56,20 +56,22 @@
                         <thead class="">
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">用户名称</th>
+                                <th class="text-center">栏目名称</th>
+                                <th class="text-center">栏目类型</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {volist name='adminuser' id='vo'}
+                            {volist name='date' id='vo'}
                             <tr>
                                 <td align="center" style="width:20%">{$vo.id}</td>
-                                <td align="center" style="width:60%">{$vo.name}</td>
+                                <td align="left" style="width:20%"> <?php echo str_repeat('-',$vo['level']*8) ?>{$vo.catename}</td>
+                                <td align="center" style="width:20%">{$vo.type}</td>
                                 <td align="center" style="width:20%">
                                     <a href="{:url('admin/edit',array('id'=>$vo.id))}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
-                                    <a href="#" onClick="warning('确实要删除吗', '{:url('admin/del',array('id'=>$vo.id))}')" class="btn btn-danger btn-sm shiny">
+                                    <a href="#" onClick="warning('确实要删除吗', '{:url('cate/del',array('id'=>$vo.id))}')" class="btn btn-danger btn-sm shiny">
                                         <i class="fa fa-trash-o"></i> 删除
                                     </a>
                                 </td>
@@ -80,7 +82,7 @@
                         
                     </table>
                     <br>
-                    {$adminuser->render()}
+                    {//$date->render()}
                 </div>
                 <div>
                 	                </div>

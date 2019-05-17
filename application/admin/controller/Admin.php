@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use app\admin\model\Admin as Madmin;
 use think\Controller;
 
-class Admin extends Controller
+class Admin extends common
 {
     public function lst()
     {
@@ -51,6 +51,24 @@ class Admin extends Controller
         
 
         return view('');
+    }
+
+    public function del($id)
+    {
+        $Madmin = new Madmin();
+        $res = $Madmin->del($id);
+        if($res)
+        {
+            return $this->success('管理员删除成功',url('admin/lst'));
+        }else{
+            return $this->error('管理员删除失败',url('admin/lst'));
+        }
+    }
+
+    public function logout()
+    {
+        session(null);
+        return $this->error('退出成功',url('login/index'));
     }
 }
 
