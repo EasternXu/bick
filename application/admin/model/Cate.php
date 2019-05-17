@@ -8,7 +8,7 @@ class Cate extends Model
 {
     public function lst()
     {
-        $data = $this->all();
+        $data = $this->order('sort desc')->select();
         return $this->cort($data);
     }
 

@@ -12,6 +12,21 @@ class Cate extends common
         $Mcate = new Mcate();
         $date = $Mcate->lst();
         $this->assign('date',$date);
+
+        if(request()->isPost())
+        {
+            $date = input('post.');
+            foreach ($date as $k => $v) {
+                $res = $Mcate->update(['id'=>$k,'sort'=>$v]);
+            }
+            if($res)
+            {
+                return $this->success('排序添加成功',url('cate/lst'));
+            }else{
+                return $this->error('排序添加失败');
+            }
+        }
+
         return view('list');
     }
 
@@ -41,9 +56,9 @@ class Cate extends common
     public function del()
     {
         $id = input('id');
-        $res = db('cate')->destory($id);
-
-        if($res ){
+        $res = db('cate')->delete($id);
+        $wres = $this->delchildren();
+        if($res && !$wres ){
             return $this->success('栏目删除成功',url('cate/lst'));
         }else{
             return $this->error('栏目删除失败');
@@ -57,12 +72,39 @@ class Cate extends common
         $Mcate = new Mcate();
 
         $data = $Mcate->del($id);
-        return view();
+        $res = db('cate')->delete($data);
+        return $res;
     }
     public function update()
     {
+        $id = input('id');
+        $data = db('cate')->find($id);
+        // dump($data);die;
+        $Mcate = new Mcate();
+        $catedata = $Mcate->lst();
+        $this->assign([
+            'date'=>$data,
+            'catedate'=>$catedata
+            ]);
+
+        if(request()->isPost()){
+            $date = input('post.');
+            // dump($date);die;
+            $res = db('cate')->update($date,['id'=>$date['id']]);
+            if($res ){
+                return $this->success('栏目修改成功',url('cate/lst'));
+            }else{
+                return $this->error('栏目修改失败');
+            }
+
+        }
         
-        return view();
+        return view('update');
+    }
+
+    public function sortupdate()
+    {
+        
     }
 }
 
