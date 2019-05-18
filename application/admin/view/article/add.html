@@ -104,7 +104,6 @@
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">所属栏目</label>
                                                 <div class="col-sm-6">
                                                     <select name="cateid" id="">
-                                                        <option value="0">--顶级栏目--</option>
                                                         {volist name='date' id='vo'}
                                                             <option value="{$vo.id}}"><?php echo str_repeat('-',$vo['level']*8) ?>{$vo.catename}</option>
                                                         {/volist}

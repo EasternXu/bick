@@ -5,9 +5,13 @@ use app\admin\model\Article as Marticle;
 
 class Article extends common
 {
+    protected $beforeActionList=[
+        
+    ];
+
     public function lst()
     {
-        $date = db('article')->paginate(5);
+        $date = db('article')->field('a.*,b.catename')->alias('a')->join('bk_cate b','a.cateid=b.id')->paginate(5);
         $this->assign('date',$date);
         return view('list');
     }
@@ -39,8 +43,43 @@ class Article extends common
     }
 
     public function update()
-    {
+    { 
+        //栏目信息
+        $Mcate = new Mcate();
+        $catedate = $Mcate->lst();
+        $this->assign('catedate',$catedate);
+        //文章信息
+        $id = input('id');
+        $articledate = db('article')->find($id);
+        $this->assign('articledate',$articledate);
+
+        if(request()->isPost()){
+            $date = input('post.');
+            $Marticle = new Marticle;
+            $res =  $Marticle->update($date,['id'=>$date['id']]);
+            if($res)
+            {
+                return $this->success('文章修改成功',url('article/lst'));
+            }else{
+                return $this->error('文章修改失败');
+            }
+
+        }
         return view();
+    }
+
+    public function del()
+    {
+        $id = input('id');
+
+        $res = Marticle::destroy($id);
+        if($res)
+        {
+            return $this->success('文章删除成功',url('article/lst'));
+        }else{
+            return $this->error('文章删除失败');
+        }
+
     }
 }
 

@@ -1,6 +1,7 @@
 <?php
 namespace app\admin\controller;
 use app\admin\model\Cate as Mcate;
+use app\admin\model\Article;
 
 class Cate extends common
 {
@@ -72,9 +73,23 @@ class Cate extends common
         $Mcate = new Mcate();
 
         $data = $Mcate->del($id);
+       
         $res = db('cate')->delete($data);
+
+         //删除栏目对应的文章
+         $data[] = $id;
+         foreach ($data as $k => $v) {
+            
+            $Marticle = new Article();
+
+            $Marticle::destroy(['cateid'=>$v]);
+
+        }
         return $res;
     }
+
+
+
     public function update()
     {
         $id = input('id');
@@ -91,7 +106,7 @@ class Cate extends common
             $date = input('post.');
             // dump($date);die;
             $res = db('cate')->update($date,['id'=>$date['id']]);
-            if($res ){
+            if($res){
                 return $this->success('栏目修改成功',url('cate/lst'));
             }else{
                 return $this->error('栏目修改失败');
