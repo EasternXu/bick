@@ -3,11 +3,20 @@ namespace app\admin\model;
 
 use think\Model;
 use think\Db;
+use app\admin\validate\Admin as Vadmin;
 
 class Admin extends Model
 {
+
+    //一对一关联
+    public  function AuthGroupAccess()
+    {
+        return $this->hasOne('auth_group_access','uid','id');
+    }
+
     public function lst()
     {
+        $res = array();
         $res = $this->order('id','asc')->paginate(5);
         return $res;
     }
@@ -15,7 +24,16 @@ class Admin extends Model
     {   
         if( !empty($data) || is_array($data) ){
             $data['password'] = md5($data['password']);
+
+            //验证器验证数据
+            $Vadmin = new Vadmin();
+            if (!$Vadmin->scene('add')->check($data)) {
+                return $Vadmin->getError();
+            }
+
+            
             $res=$this->save($data);
+            
             if ($res) {
                 return 1;
             }else{
@@ -29,7 +47,13 @@ class Admin extends Model
     public function edit()
     {
         $data = input('post.');
-        
+
+        //验证器验证数据
+        $Vadmin = new Vadmin();
+        if (!$Vadmin->scene('edit')->check($data)) {
+            return $Vadmin->getError();
+        }
+
         if(!$data['password']){
             $info = db('admin')->find($data['id']);
             $data['password'] = $info['password'];

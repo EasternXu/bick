@@ -81,6 +81,18 @@
                                                     <p class="help-block col-sm-4 red">* 必填</p>
                                              </div>
                                              <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目关键字</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" id="username" value="{$date.keywords}" placeholder="请输入栏目" name="keywords"  type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目描述</label>
+                                                <div class="col-sm-6">
+                                                    <input class="form-control" id="username" value="{$date.desc}" placeholder="请输入栏目" name="desc" type="text">
+                                                </div>
+                                            </div>
+                                             <div class="form-group">
                                                     <label for="username" class="col-sm-2 control-label no-padding-right">栏目类型</label>
                                                 <div class="col-sm-6">
                                                     <select name="type" id="">
@@ -91,7 +103,13 @@
                                                 </div>
                                              </div>
                                             
-
+                                             <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目内容</label>
+                                                <div class="col-sm-6">
+                                                    <textarea  name="content" id="content" >{$date.content}</textarea>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
@@ -116,9 +134,15 @@
     <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
     <script src="__ADMIN__/style/jquery.js"></script>
+
+    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
+    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
+    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
-
+    <script type="text/javascript ">
+        UE.getEditor('content',{initialFrameWidth:650,initialFrameHeight:400,});
+    </script>
 
 </body></html>

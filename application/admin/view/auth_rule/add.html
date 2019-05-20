@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>栏目添加</title>
+    <title>权限添加</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,11 +37,12 @@
                         <li>
                             <a href="{:url('admin')}">系统</a>
                         </li>
+                        
                         <li>
-                            <a href="{:url('cate/lst')}">栏目管理</a>
+                            <a href="{:url('AuthRule/lst')}">权限管理</a>
                         </li>
                         <li class="active">
-                            添加栏目
+                            添加权限
                         </li>
                     </ul>
                 </div>
@@ -54,62 +55,56 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增栏目</span>
+                                    <span class="widget-caption">新增权限</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
-                                        <form class="form-horizontal"  action="{:url('cate/add')}" method="post">
+                                        <form class="form-horizontal"  action="{:url('AuthRule/add')}" method="post">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">父级栏目</label>
-                                                <div class="col-sm-6">
-                                                    <select name="pid" id="">
-                                                        <option value="0">--顶级栏目--</option>
-                                                        {volist name='catedata' id='vo'}
-                                                            <option value="{$vo.id}}"><?php echo str_repeat('-',$vo['level']*8) ?>{$vo.catename}</option>
-                                                        {/volist}
-
-                                                    </select>
-                                                </div>
-                                                <p class="help-block col-sm-4 red">* 必填</p>
-                                            </div>
+                                                    <label for="username" class="col-sm-2 control-label no-padding-right">父级权限</label>
+                                                        <div class="col-sm-6">
+                                                            <select  name="pid" id="">
+                                                                <option value="0">--顶级权限--</option>
+                                                                {volist name="pruleDate" id='vo'}
+                                                                <option value="{$vo.id}"><?php echo str_repeat('-',$vo['level']*4); ?>{$vo.title}</option>
+                                                                {/volist}
+                                                            </select>
+                                                        </div>
+                                             </div>
                                             <div class="form-group">
-                                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目名称</label>
+                                                    <label for="username" class="col-sm-2 control-label no-padding-right">权限标题</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="请输入栏目" name="catename" required="" type="text">
+                                                        <input class="form-control" id="username" placeholder="请输入权限标题" name="title" required="" type="text">
                                                     </div>
                                                     <p class="help-block col-sm-4 red">* 必填</p>
                                              </div>
                                              <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目关键字</label>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control" id="username" placeholder="请输入栏目关键字" name="keywords"  type="text">
-                                                </div>
+                                                
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">权限名称</label>
+                                                <p class="help-block col-sm-4 red">
+                                                    <label>
+                                                            <input class="form-control" id="username" placeholder="请输入权限名称" name="name" required="" type="text">
+                                                    </label>
+                                                </p>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目描述</label>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control" id="username" placeholder="请输入栏目描述" name="desc"  type="text">
-                                                </div>
-                                            </div>
-                                            
-                                                <div class="form-group">
-                                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目类型</label>
-                                                <div class="col-sm-6">
-                                                    <select name="type" id="">
-                                                        <option value="1">文章列表栏目</option>
-                                                        <option value="2">单页栏目</option>
-                                                        <option value="3">图片列表</option>
-                                                    </select>
-                                                </div>
-                                             </div>
-                                            
                                              <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目内容</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">权限状态</label>
                                                 <div class="col-sm-6">
-                                                    <textarea  name="content" id="content" ></textarea>
+                                                   <select name="status" class="select" id="">
+                                                       <option value="1">开启</option>
+                                                       <option value="0">关闭</option>
+                                                   </select>
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">权限描述</label>
+                                                <div class="col-sm-6">
+                                                    <textarea name="condition" class="form-control" id="" cols="30" ></textarea>
+                                                </div>
+                                            </div>
+
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
@@ -134,15 +129,9 @@
     <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
     <script src="__ADMIN__/style/jquery.js"></script>
-
-    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
-    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
-    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
-    <script type="text/javascript ">
-        UE.getEditor('content',{initialFrameWidth:650,initialFrameHeight:400,});
-    </script>
+
 
 </body></html>

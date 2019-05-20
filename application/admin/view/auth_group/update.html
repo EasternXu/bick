@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 	    <meta charset="utf-8">
-    <title>童老师ThinkPHP交流群：484519446</title>
+    <title>用户组修改</title>
 
     <meta name="description" content="Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,10 +38,10 @@
                             <a href="{:url('admin')}">系统</a>
                         </li>
                         <li>
-                            <a href="{:url('admin/lst')}">管理员管理</a>
+                            <a href="{:url('AuthRule/lst')}">用户组管理</a>
                         </li>
                         <li class="active">
-                            添加用户
+                            修改用户组
                         </li>
                     </ul>
                 </div>
@@ -54,36 +54,51 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增管理员</span>
+                                    <span class="widget-caption">修改用户组</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
-                                        <form class="form-horizontal"  action="" method="post">
-                                                <div class="form-group">
-                                                        <label for="username" class="col-sm-2 control-label no-padding-right">所属用户组:</label>
-                                                        <div class="col-sm-6">
-                                                            <select name="group_id" id="">
-                                                                {volist name="groupdate" id='vo'}
-                                                                <option value="{$vo.id}">{$vo.title}</option>
-                                                                {/volist}
-                                                            </select>
-                                                        </div>
-                                                        <p class="help-block col-sm-4 red">* 必填</p>
-                                                    </div>
+                                        <form class="form-horizontal"  action="{:url('Auth_group/update')}" method="post">
+                                            <input type="hidden" name="id" value="{$groupdate.id}">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">用户名</label>
+                                                    <label for="username" class="col-sm-2 control-label no-padding-right">用户组标题</label>
+                                                    <div class="col-sm-6">
+                                                        <input class="form-control" id="username" value="{$groupdate.title}" placeholder="请输入用户组标题" name="title" required="" type="text">
+                                                    </div>
+                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                             </div>
+                                             <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">用户组状态</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" id="username" placeholder="请填写管理员名称" name="name" required="" type="text">
+                                                   <select name="status" class="select" id="">
+                                                       <option {if condition="$groupdate.status eq 1"} selected {/if} value="1">开启</option>
+                                                       <option {if condition="$groupdate.status eq 0"} selected {/if}  value="0">关闭</option>
+                                                   </select>
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
                                             <div class="form-group">
-                                                    <label for="username" class="col-sm-2 control-label no-padding-right">密码</label>
-                                                    <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="请输入密码" name="password" required="" type="text">
-                                                    </div>
-                                                    <p class="help-block col-sm-4 red">* 必填</p>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">用户组权限</label>
+                                                <div class="col-sm-6">
+                                                    <table>
+                                                        {volist name='ruledate' id='vo'}
+                                                        <tr>
+                                                            <td>
+                                                                {if condition="$vo.pid neq 0"}
+                                                                <input class="inverted checkbox-parent"
+                                                                {foreach name="rules" item="rule"}
+                                                                {if condition="$rule eq $vo.id"} checked{/if}
+                                                                 {/foreach}
+                                                                style="opacity:1;position:unset;"  type="checkbox"  name="rules[]" value="{$vo.id}" >
+                                                                {/if}
+                                                                <?php echo str_repeat('-',$vo['level']*4); ?>{$vo.title}
+                                                            </td>
+                                                        </tr>
+                                                        {/volist}
+                                                    </table>
                                                 </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
                                                     <button type="submit" class="btn btn-default">提交</button>

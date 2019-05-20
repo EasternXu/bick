@@ -323,6 +323,18 @@ style.firebugResetStyles {
             <div class="widget-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" action="{:url('admin/edit')}" method="post">
+                        <input type="hidden" name="id" value="{$admininfo.id}">
+                        <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">所属用户组:</label>
+                                <div class="col-sm-6">
+                                    <select name="group_id" id="">
+                                        {volist name="groupdate" id='vo'}
+                                        <option {if condition="$vo.id eq $gid" } selected {/if} value="{$vo.id}">{$vo.title}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                                <p class="help-block col-sm-4 red">* 必填</p>
+                        </div>
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label no-padding-right">管理员姓名</label>
                             <div class="col-sm-6">

@@ -38,10 +38,10 @@
                             <a href="{:url('admin')}">系统</a>
                         </li>
                         <li>
-                            <a href="{:url('cate/lst')}">栏目管理</a>
+                            <a href="{:url('link/lst')}">链接管理</a>
                         </li>
                         <li class="active">
-                            添加栏目
+                            修改链接
                         </li>
                     </ul>
                 </div>
@@ -54,62 +54,34 @@
                         <div class="col-lg-12 col-sm-12 col-xs-12">
                             <div class="widget">
                                 <div class="widget-header bordered-bottom bordered-blue">
-                                    <span class="widget-caption">新增栏目</span>
+                                    <span class="widget-caption">修改链接</span>
                                 </div>
                                 <div class="widget-body">
                                     <div id="horizontal-form">
-                                        <form class="form-horizontal"  action="{:url('cate/add')}" method="post">
+                                        <form class="form-horizontal"  action="{:url('link/update')}" method="post">
+                                            <input type="hidden" name="id" value="{$linkdate.id}">
                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">父级栏目</label>
-                                                <div class="col-sm-6">
-                                                    <select name="pid" id="">
-                                                        <option value="0">--顶级栏目--</option>
-                                                        {volist name='catedata' id='vo'}
-                                                            <option value="{$vo.id}}"><?php echo str_repeat('-',$vo['level']*8) ?>{$vo.catename}</option>
-                                                        {/volist}
-
-                                                    </select>
-                                                </div>
-                                                <p class="help-block col-sm-4 red">* 必填</p>
-                                            </div>
-                                            <div class="form-group">
-                                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目名称</label>
+                                                    <label for="username" class="col-sm-2 control-label no-padding-right">链接标题</label>
                                                     <div class="col-sm-6">
-                                                        <input class="form-control" id="username" placeholder="请输入栏目" name="catename" required="" type="text">
+                                                        <input class="form-control" id="username" value="{$linkdate.title}" placeholder="请输入链接标题" name="title" required="" type="text">
                                                     </div>
                                                     <p class="help-block col-sm-4 red">* 必填</p>
                                              </div>
                                              <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目关键字</label>
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接</label>
                                                 <div class="col-sm-6">
-                                                    <input class="form-control" id="username" placeholder="请输入栏目关键字" name="keywords"  type="text">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目描述</label>
-                                                <div class="col-sm-6">
-                                                    <input class="form-control" id="username" placeholder="请输入栏目描述" name="desc"  type="text">
-                                                </div>
-                                            </div>
-                                            
-                                                <div class="form-group">
-                                                    <label for="username" class="col-sm-2 control-label no-padding-right">栏目类型</label>
-                                                <div class="col-sm-6">
-                                                    <select name="type" id="">
-                                                        <option value="1">文章列表栏目</option>
-                                                        <option value="2">单页栏目</option>
-                                                        <option value="3">图片列表</option>
-                                                    </select>
-                                                </div>
-                                             </div>
-                                            
-                                             <div class="form-group">
-                                                <label for="username" class="col-sm-2 control-label no-padding-right">栏目内容</label>
-                                                <div class="col-sm-6">
-                                                    <textarea  name="content" id="content" ></textarea>
+                                                    <input class="form-control" id="username" value="{$linkdate.url}" placeholder="请输入链接" name="url" required="" type="text">
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="username" class="col-sm-2 control-label no-padding-right">链接描述</label>
+                                                <div class="col-sm-6">
+                                                    <textarea name="desc" class="form-control" id="" cols="30" >{$linkdate.desc}</textarea>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
+
 
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">
@@ -134,15 +106,9 @@
     <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
     <script src="__ADMIN__/style/jquery.js"></script>
-
-    <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
-    <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
-    <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>
     <!--Beyond Scripts-->
     <script src="__ADMIN__/style/beyond.js"></script>
     
-    <script type="text/javascript ">
-        UE.getEditor('content',{initialFrameWidth:650,initialFrameHeight:400,});
-    </script>
+
 
 </body></html>
