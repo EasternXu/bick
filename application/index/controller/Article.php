@@ -1,10 +1,16 @@
 <?php
 namespace app\index\controller;
 
+use app\admin\model\Article as Marticle;
+
 class Article extends Common
 {
     public function index()
     {
-        return view('article');
+        $articleId = input('articleid');
+        $articleData = Marticle::find($articleId);
+        return view('article',[
+            'articleData'=>$articleData,
+        ]);
     }
 }

@@ -10,6 +10,8 @@ class Common extends Controller
     {
         //获取栏目信息
         $this->getCate();
+        //获取栏目位置信息
+        $this->getPcate();
     }
     public function getCate()
     {
@@ -25,5 +27,26 @@ class Common extends Controller
         // dump($catedata);die;
         $this->assign('cates',$catedata);
         
+    }
+
+
+    public function getPcate()
+    {   
+        $cateid = input('cateid');
+         //获取但前栏目名称
+         $catenamme = array();
+         $cateName = Cate::find($cateid);
+         $catename['catename'] = $cateName['catename'];
+         //获取父级栏目名称
+         if ($cateName['pid']!=0) {
+             $catePName = Cate::select($cateName['pid']);
+             foreach ($catePName as $k => $v) {
+                 $catename['Pname'] = $v['catename'];
+             }
+             
+         }else {
+             $catename['Pname'] = '';
+         }
+         $this->assign('cateName',$catename);
     }
 }

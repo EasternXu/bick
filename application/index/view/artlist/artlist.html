@@ -51,11 +51,11 @@
                 {volist name='articleData' id='vo'}
                 <div class="xh_post_h_3 ofh">
                     <div class="xh">
-                        <a target="_blank" href="{:url('article/index',array('articleid'=>$vo.id))}" title="{$vo.title}">
+                        <a  href="{:url('article/index',array('articleid'=>$vo.id))}" title="{$vo.title}">
                             <img src="{$vo.thumb}" alt="{$vo.title}" height="240" width="400"></a></div>
                     <div class="r ofh">
                         <h2 class="xh_post_h_3_title ofh" style="height:60px;">
-                            <a target="_blank" href="{:url('article/index',array('articleid'=>$vo.id))}" title="{$vo.title}">{$vo.title}</a>
+                            <a  href="{:url('article/index',array('articleid'=>$vo.id))}" title="{$vo.title}">{$vo.title}</a>
                         </h2>
                         <span class="time">{$vo.time|date='Y年m月d日',###}</span>
                         <div class="xh_post_h_3_entry ofh" style="color:#555;height:80px; overflow:hidden;">
