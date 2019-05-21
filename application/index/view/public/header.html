@@ -17,7 +17,7 @@
             {if condition="$vo.children neq 0"} class="havechild" {/if}
             href="
                 {switch name='$vo.type' }
-                    {case value='1'}{:url('artlist/index')}{/case}
+                    {case value='1'}{:url('artlist/index',array('cateid'=>$vo.id))}{/case}
                     {case value='2'}{:url('page/index')}{/case}
                     {case value='3'}{:url('imglist/index')}{/case}
                 {/switch}">{$vo.catename}</a>
@@ -26,7 +26,7 @@
                 {volist name="vo.children" id='vo2'}
                 <li><a  href="
                     {switch name='$vo.type' }
-                        {case value='1'}{:url('artlist/index')}{/case}
+                        {case value='1'}{:url('artlist/index',array('cateid'=>$vo2.id))}{/case}
                         {case value='2'}{:url('page/index')}{/case}
                         {case value='3'}{:url('imglist/index')}{/case}
                     {/switch}">{$vo2.catename}</a></li>

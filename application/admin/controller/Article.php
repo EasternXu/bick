@@ -24,6 +24,7 @@ class Article extends common
 
         if(request()->isPost()){
             $articledate = input('post.');
+            $articledate['time'] = time();
 
             // dump($articledate);die;
             $Article = new Marticle();
