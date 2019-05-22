@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use think\Controller;
 use app\index\model\Cate;
+use app\index\model\Article;
 
 class Common extends Controller
 {
@@ -12,6 +13,12 @@ class Common extends Controller
         $this->getCate();
         //获取栏目位置信息
         $this->getPcate();
+
+        //点击数
+        $articleid = input('articleid');
+        if ($articleid) {
+            $this->click($articleid);
+        }
     }
     public function getCate()
     {
@@ -48,5 +55,14 @@ class Common extends Controller
              $catename['Pname'] = '';
          }
          $this->assign('cateName',$catename);
+    }
+
+    public function click($articleid)
+    {
+        
+        $articleData = Article::get($articleid);
+
+        $articleData->click = $articleData['click']+1;
+        $articleData->save();
     }
 }

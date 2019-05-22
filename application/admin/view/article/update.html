@@ -104,7 +104,20 @@
                                                 </div>
                                                 <p class="help-block col-sm-4 red">* 必填</p>
                                             </div>
-
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label no-padding-right">是否推荐</label>
+                                                <div class="col-sm-6">
+                                                    <label>
+                                                        <input name="rec" class="inverted" {if condition="$articledate.rec eq 1"} checked {/if} type="radio" value="1">
+                                                        <span class="text">是 </span>
+                                                    </label>
+                                                    <label  style="margin-left: 15px;">
+                                                        <input  class="inverted" type="radio" name="rec" {if condition="$articledate.rec eq 0"} checked {/if} id="" value="0">
+                                                        <span class="text">否</span>
+                                                    </label>
+                                                </div>
+                                                <p class="help-block col-sm-4 red">* 必填</p>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="username" class="col-sm-2 control-label no-padding-right">所属栏目</label>
                                                 <div class="col-sm-6">
@@ -150,6 +163,7 @@
     <script src="__ADMIN__/style/jquery_002.js"></script>
     <script src="__ADMIN__/style/bootstrap.js"></script>
     <script src="__ADMIN__/style/jquery.js"></script>
+    
     <script src="__ADMIN__/ueditor/ueditor.config.js"></script>
     <script src="__ADMIN__/ueditor/ueditor.all.min.js"></script>
     <script src="__ADMIN__/ueditor/lang/zh-cn/zh-cn.js"></script>

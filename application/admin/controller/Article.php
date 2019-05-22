@@ -11,7 +11,7 @@ class Article extends common
 
     public function lst()
     {
-        $date = db('article')->field('a.*,b.catename')->alias('a')->join('bk_cate b','a.cateid=b.id')->paginate(5);
+        $date = db('article')->field('a.*,b.catename')->alias('a')->join('bk_cate b','a.cateid=b.id')->order('a.id desc')->paginate(5);
         $this->assign('date',$date);
         return view('list');
     }

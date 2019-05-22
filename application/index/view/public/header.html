@@ -9,54 +9,34 @@
         </div>
         <div id="navi">
 
-<ul id="jsddm">
-    <li><a class="navi_home" href="{:url('index/index')}">首页</a></li>
-    {volist name="cates" id='vo'}
-    <li>
-        <a
-            {if condition="$vo.children neq 0"} class="havechild" {/if}
-            href="
-                {switch name='$vo.type' }
-                    {case value='1'}{:url('artlist/index',array('cateid'=>$vo.id))}{/case}
-                    {case value='2'}{:url('page/index')}{/case}
-                    {case value='3'}{:url('imglist/index')}{/case}
-                {/switch}">{$vo.catename}</a>
-        {if condition="$vo.children neq 0"}
-            <ul>
-                {volist name="vo.children" id='vo2'}
-                <li><a  href="
-                    {switch name='$vo.type' }
-                        {case value='1'}{:url('artlist/index',array('cateid'=>$vo2.id))}{/case}
-                        {case value='2'}{:url('page/index')}{/case}
-                        {case value='3'}{:url('imglist/index')}{/case}
-                    {/switch}">{$vo2.catename}</a></li>
-                {/volist}
-            </ul>
-        {/if}
-    </li>
-    {/volist}
-     <!--<li><a href="/plus/list.php?tid=1">单车分类</a>
-            <ul>
-                <li><a href="/plus/list.php?tid=5">死飞车</a></li>
-                <li><a href="/plus/list.php?tid=6">复古骑行</a></li>
-                <li><a href="/plus/list.php?tid=7">公路车</a></li>
-                <li><a href="/plus/list.php?tid=8">山地车</a></li>
-                <li><a href="/plus/list.php?tid=9">折叠/小径车</a></li>
-                <li><a href="/plus/list.php?tid=10">BMX</a></li>
-                <li><a href="/plus/list.php?tid=11">城市车及其他</a></li>
-            </ul>
+        <ul id="jsddm">
+            <li><a class="navi_home" href="{:url('index/index')}">首页</a></li>
+            {volist name="cates" id='vo'}
+            <li>
+                <a
+                    {if condition="$vo.children neq 0"} class="havechild" {/if}
+                    href="
+                        {switch name='$vo.type' }
+                            {case value='1'}{:url('artlist/index',array('cateid'=>$vo.id))}{/case}
+                            {case value='2'}{:url('page/index',array('cateid'=>$vo.id))}{/case}
+                            {case value='3'}{:url('imglist/index',array('cateid'=>$vo.id))}{/case}
+                        {/switch}">{$vo.catename}</a>
+                {if condition="$vo.children neq 0"}
+                    <ul>
+                        {volist name="vo.children" id='vo2'}
+                        <li><a  href="
+                            {switch name='$vo.type' }
+                                {case value='1'}{:url('artlist/index',array('cateid'=>$vo2.id))}{/case}
+                                {case value='2'}{:url('page/index',array('cateid'=>$vo2.id))}{/case}
+                                {case value='3'}{:url('imglist/index',array('cateid'=>$vo2.id))}{/case}
+                            {/switch}">{$vo2.catename}</a></li>
+                        {/volist}
+                    </ul>
+                {/if}
+            </li>
+            {/volist}
 
-    </li>
-    <li><a href="/plus/list.php?tid=2">骑行装备</a>
-        <ul>
-            <li><a href="/plus/list.php?tid=12">车身装备</a></li>
-            <li><a href="/plus/list.php?tid=13">人身装备</a></li>
         </ul>
-    </li>
-    <li><a href="/plus/list.php?tid=3">单车生活</a></li>
-    <li><a href="/plus/list.php?tid=4">行业资讯</a></li> -->
-
-</ul>
 
             <div style="clear: both;">
             </div>
@@ -66,15 +46,15 @@
         <div style="float: right; width: 209px;">
             <div class="widget" style="height: 30px; padding-top: 20px;">
                 <div style="float: left;">
-      <form  name="formsearch" action="/plus/search.php"><input type="hidden" name="kwtype" value="0" />                
-<input name="q" type="text" style="background-color: #000000;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
-        </form>
-                        </div>
+                    <form  name="formsearch" action="{:url('search/index')}" method="GET">
+                        <input type="hidden" name="kwtype" value="0" />                
+                        <input name="keyword" type="text" style="background-color: #fff;padding-left: 10px; font-size: 12px;font-family: 'Microsoft Yahei'; color: #999999;height: 29px; width: 160px; border: solid 1px #666666; line-height: 28px;" id="go" value="在这里搜索..." onfocus="if(this.value=='在这里搜索...'){this.value='';}"  onblur="if(this.value==''){this.value='在这里搜索...';}" />
+                    </form>
+                </div>
                 <div style="float: left;">
                     <img src="__INDEX__/images/search-new.png" id="imgSearch" style="cursor: pointer; margin: 0px;
-                        padding: 0px;" onclick="ISearch()" /></div>
-                <div style="clear: both;">
-                </div>
+                        padding: 0px;" onclick="subForm()" /></div>
+                <div style="clear: both;"></div>
             </div>
         </div>
         

@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "topthink/framework": "5.0.*"
+        "topthink/framework": "5.0.*",
+        "marlon/thinkphp-redis": "^0.0.3"
     },
     "autoload": {
         "psr-4": {

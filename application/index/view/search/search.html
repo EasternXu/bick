@@ -47,11 +47,15 @@
             <div id="xh_content">
 
                 <div class="path">
-                    <a href="{:url('index/index')}">主页</a> >{if condition="$cateName.Pname neq ''"}<a href="#">{$cateName.Pname}</a> > {/if} <a href='/life/'>{$cateName.catename}</a>
+                    <a href="{:url('index/index')}">主页</a> >&nbsp;搜索结果：
                 </div>
                 <div class="clear"></div>
                 <div class="xh_area_h_3" style="margin-top: 40px;">
+                    
                     {volist name='articleData' id='vo'}
+                    {if condition="$vo.id eq ''"}
+                    暂无搜索结果
+                    {/if}
                     <div class="xh_post_h_3 ofh">
                         <div class="xh">
                             <a  href="{:url('article/index',array('articleid'=>$vo.id))}" title="{$vo.title}">
@@ -73,7 +77,6 @@
                     </div>
                     {/volist}                 
                     {$articleData->render()}
-                    
                 </div>
             </div>
             <div id="xh_sidebar">
